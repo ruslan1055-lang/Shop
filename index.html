@@ -98,6 +98,96 @@ body::before { content:''; position:fixed; inset:0; pointer-events:none; z-index
 .success-flash { position:fixed; inset:0; z-index:99000; pointer-events:none; background:rgba(0,245,255,0.07); animation:flash 0.5s ease-out forwards; }
 .success-flash.pink { background:rgba(255,0,170,0.07); }
 @keyframes flash { 0%{opacity:1} 100%{opacity:0} }
+
+/* MAX TAB */
+.tab-btn.max-tab.active { color:#ffd700; text-shadow:0 0 14px rgba(255,215,0,0.7); }
+.tab-btn.max-tab.active::after { background:linear-gradient(90deg,#ffd700,#ff8c00); box-shadow:0 0 12px rgba(255,215,0,0.6); opacity:1; left:10%; right:10%; }
+
+/* MAX MODAL OVERLAY */
+#max-overlay { position:fixed; inset:0; z-index:8500; background:rgba(0,0,0,0.92); backdrop-filter:blur(20px); display:flex; align-items:flex-end; justify-content:center; opacity:0; pointer-events:none; transition:opacity 0.25s; }
+#max-overlay.active { opacity:1; pointer-events:all; }
+.max-modal { background:linear-gradient(160deg,rgba(8,6,25,0.99),rgba(2,2,14,0.99)); border:1px solid rgba(255,215,0,0.25); border-radius:28px 28px 0 0; width:100%; max-width:480px; max-height:92vh; overflow-y:auto; padding:0 0 32px; transform:translateY(60px); transition:transform 0.32s cubic-bezier(0.34,1.15,0.64,1); position:relative; }
+.max-modal::-webkit-scrollbar{width:2px} .max-modal::-webkit-scrollbar-thumb{background:rgba(255,215,0,0.3);border-radius:2px}
+#max-overlay.active .max-modal { transform:translateY(0); }
+.max-modal::before { content:''; position:absolute; top:0; left:15%; right:15%; height:1px; background:linear-gradient(90deg,transparent,#ffd700,transparent); }
+
+/* HERO HEADER */
+.max-hero { text-align:center; padding:28px 20px 20px; position:relative; }
+.max-crown { font-size:48px; display:block; filter:drop-shadow(0 0 20px rgba(255,215,0,0.7)); animation:crownPulse 2.5s ease-in-out infinite alternate; }
+@keyframes crownPulse { 0%{filter:drop-shadow(0 0 10px rgba(255,215,0,0.5))} 100%{filter:drop-shadow(0 0 30px rgba(255,215,0,0.9)) drop-shadow(0 0 60px rgba(255,140,0,0.4))} }
+.max-badge-label { display:inline-block; font-family:'Orbitron',monospace; font-size:22px; font-weight:900; background:linear-gradient(90deg,#ffd700,#ff8c00,#ffd700); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; background-size:200%; animation:goldShimmer 3s linear infinite; letter-spacing:4px; margin-top:8px; }
+@keyframes goldShimmer { 0%{background-position:0%} 100%{background-position:200%} }
+.max-tagline { font-family:'Share Tech Mono',monospace; font-size:10px; color:rgba(255,215,0,0.45); letter-spacing:3px; margin-top:6px; }
+
+/* PERKS */
+.perks-wrap { padding:0 18px 18px; }
+.perks-title { font-family:'Share Tech Mono',monospace; font-size:10px; letter-spacing:3px; color:rgba(255,215,0,0.4); text-transform:uppercase; margin-bottom:12px; display:flex; align-items:center; gap:8px; }
+.perks-title::after { content:''; flex:1; height:1px; background:linear-gradient(90deg,rgba(255,215,0,0.2),transparent); }
+.perk-item { display:flex; align-items:center; gap:14px; background:linear-gradient(135deg,rgba(255,215,0,0.04),rgba(255,140,0,0.02)); border:1px solid rgba(255,215,0,0.1); border-radius:14px; padding:12px 14px; margin-bottom:8px; transition:border-color 0.2s; }
+.perk-item:hover { border-color:rgba(255,215,0,0.3); }
+.perk-icon { font-size:22px; flex-shrink:0; filter:drop-shadow(0 0 8px rgba(255,215,0,0.5)); }
+.perk-text { flex:1; }
+.perk-name { font-family:'Orbitron',monospace; font-size:11px; font-weight:700; color:#ffd700; text-shadow:0 0 10px rgba(255,215,0,0.4); letter-spacing:0.5px; }
+.perk-desc { font-family:'Share Tech Mono',monospace; font-size:10px; color:rgba(232,244,255,0.5); margin-top:3px; }
+.perk-badge { font-family:'Orbitron',monospace; font-size:9px; font-weight:700; background:linear-gradient(135deg,rgba(255,215,0,0.15),rgba(255,140,0,0.08)); border:1px solid rgba(255,215,0,0.4); color:#ffd700; padding:3px 8px; border-radius:6px; white-space:nowrap; flex-shrink:0; }
+
+/* PLANS */
+.plans-wrap { padding:0 18px; }
+.plans-title { font-family:'Share Tech Mono',monospace; font-size:10px; letter-spacing:3px; color:rgba(255,215,0,0.4); text-transform:uppercase; margin-bottom:12px; display:flex; align-items:center; gap:8px; }
+.plans-title::after { content:''; flex:1; height:1px; background:linear-gradient(90deg,rgba(255,215,0,0.2),transparent); }
+.plan-card { position:relative; overflow:hidden; border-radius:16px; margin-bottom:10px; background:linear-gradient(135deg,rgba(8,7,22,0.98),rgba(4,3,14,0.98)); border:1px solid rgba(255,215,0,0.13); cursor:pointer; transition:transform 0.12s cubic-bezier(0.34,1.5,0.64,1),border-color 0.2s,box-shadow 0.2s; user-select:none; }
+.plan-card:active { transform:scale(0.96) translateY(2px); filter:brightness(0.82); }
+.plan-card:hover { border-color:rgba(255,215,0,0.4); box-shadow:0 0 24px rgba(255,215,0,0.1); }
+.plan-card.featured { border-color:rgba(255,215,0,0.5); box-shadow:0 0 20px rgba(255,215,0,0.12); }
+.plan-card::before { content:''; position:absolute; top:-100%; left:0; right:0; height:40%; background:linear-gradient(180deg,transparent,rgba(255,215,0,0.05),transparent); animation:scanCard 4s ease-in-out infinite; pointer-events:none; }
+.plan-inner { position:relative; z-index:1; display:flex; align-items:center; padding:14px 16px; gap:12px; }
+.plan-bar { width:3px; height:46px; border-radius:2px; flex-shrink:0; background:linear-gradient(180deg,#ffd700,rgba(255,215,0,0)); box-shadow:0 0 10px rgba(255,215,0,0.6); }
+.plan-icon { font-size:24px; flex-shrink:0; }
+.plan-info { flex:1; min-width:0; }
+.plan-days { font-family:'Orbitron',monospace; font-size:13px; font-weight:900; color:#ffd700; text-shadow:0 0 12px rgba(255,215,0,0.45); letter-spacing:0.5px; }
+.plan-sub { font-family:'Share Tech Mono',monospace; font-size:10px; color:rgba(232,244,255,0.45); margin-top:2px; }
+.plan-price { font-family:'Orbitron',monospace; font-size:12px; font-weight:900; color:#ffd700; text-align:right; flex-shrink:0; text-shadow:0 0 12px rgba(255,215,0,0.5); }
+.plan-price .plan-lbl { display:block; font-size:9px; color:rgba(255,215,0,0.4); font-weight:400; font-family:'Share Tech Mono',monospace; letter-spacing:1px; margin-bottom:2px; }
+.plan-badge { position:absolute; top:10px; right:10px; font-family:'Orbitron',monospace; font-size:8px; font-weight:700; letter-spacing:1.5px; padding:3px 9px; border-radius:4px; text-transform:uppercase; }
+.plan-badge-pop { background:rgba(255,215,0,0.12); border:1px solid rgba(255,215,0,0.45); color:#ffd700; }
+.plan-badge-best { background:rgba(0,255,136,0.1); border:1px solid rgba(0,255,136,0.4); color:#00ff88; }
+
+/* MAX CONFIRM */
+#max-confirm-overlay { position:fixed; inset:0; z-index:9500; background:rgba(0,0,0,0.93); backdrop-filter:blur(20px); display:flex; align-items:flex-end; justify-content:center; padding:20px; opacity:0; pointer-events:none; transition:opacity 0.22s; }
+#max-confirm-overlay.active { opacity:1; pointer-events:all; }
+.max-confirm-box { background:linear-gradient(160deg,rgba(8,6,25,0.99),rgba(2,2,14,0.99)); border:1px solid rgba(255,215,0,0.28); border-radius:24px 24px 20px 20px; width:100%; max-width:440px; padding:26px 22px 28px; transform:translateY(40px); transition:transform 0.28s cubic-bezier(0.34,1.2,0.64,1); position:relative; overflow:hidden; }
+.max-confirm-box::before { content:''; position:absolute; top:0; left:20%; right:20%; height:1px; background:linear-gradient(90deg,transparent,#ffd700,transparent); }
+.max-c-title { font-family:'Orbitron',monospace; font-size:15px; font-weight:900; color:#ffd700; text-shadow:0 0 16px rgba(255,215,0,0.6); text-align:center; margin-bottom:4px; letter-spacing:1px; }
+.max-c-sub { text-align:center; font-family:'Share Tech Mono',monospace; font-size:10px; color:rgba(255,215,0,0.35); letter-spacing:2px; margin-bottom:16px; }
+.max-c-info { background:rgba(255,215,0,0.04); border:1px solid rgba(255,215,0,0.15); border-radius:12px; padding:14px 16px; margin-bottom:16px; }
+.max-c-plan { font-family:'Orbitron',monospace; font-size:14px; font-weight:900; color:#ffd700; text-align:center; margin-bottom:4px; }
+.max-c-price { font-family:'Share Tech Mono',monospace; font-size:11px; color:rgba(255,215,0,0.6); text-align:center; }
+#max-confirm-overlay.active .max-confirm-box { transform:translateY(0); }
+
+/* SPINNER */
+.spinner-wrap { display:none; flex-direction:column; align-items:center; justify-content:center; padding:20px 0 8px; }
+.spinner-wrap.show { display:flex; }
+.spinner-ring { width:70px; height:70px; border-radius:50%; border:3px solid rgba(255,215,0,0.12); border-top:3px solid #ffd700; border-right:3px solid #ff8c00; animation:spin 0.9s linear infinite; box-shadow:0 0 24px rgba(255,215,0,0.3), inset 0 0 16px rgba(255,140,0,0.1); }
+@keyframes spin { to{transform:rotate(360deg)} }
+.spinner-txt { font-family:'Share Tech Mono',monospace; font-size:10px; color:rgba(255,215,0,0.5); letter-spacing:3px; margin-top:12px; animation:blink 1.2s ease-in-out infinite; }
+
+/* RECEIPT FIELDS */
+.max-fields { margin-bottom:14px; }
+.max-field-label { font-family:'Share Tech Mono',monospace; font-size:10px; color:rgba(255,215,0,0.4); letter-spacing:2px; text-transform:uppercase; margin-bottom:6px; }
+.max-input { width:100%; background:rgba(255,215,0,0.03); border:1px solid rgba(255,215,0,0.2); border-radius:10px; color:var(--text); font-family:'Share Tech Mono',monospace; font-size:11px; padding:10px 12px; outline:none; transition:border-color 0.2s; margin-bottom:10px; }
+.max-input:focus { border-color:rgba(255,215,0,0.55); box-shadow:0 0 12px rgba(255,215,0,0.1); }
+.max-input::placeholder { color:rgba(255,215,0,0.2); }
+.max-receipt-ta { width:100%; min-height:80px; background:rgba(255,215,0,0.03); border:1px solid rgba(255,215,0,0.2); border-radius:10px; color:var(--text); font-family:'Share Tech Mono',monospace; font-size:11px; padding:10px 12px; outline:none; resize:vertical; transition:border-color 0.2s; margin-bottom:14px; }
+.max-receipt-ta:focus { border-color:rgba(255,215,0,0.55); box-shadow:0 0 12px rgba(255,215,0,0.1); }
+.max-receipt-ta::placeholder { color:rgba(255,215,0,0.2); }
+.max-info-block { background:rgba(255,215,0,0.03); border:1px solid rgba(255,215,0,0.1); border-radius:10px; padding:10px 12px; margin-bottom:14px; font-family:'Share Tech Mono',monospace; font-size:10px; color:rgba(255,215,0,0.5); line-height:1.7; }
+.btn-max-cancel { flex:1; padding:13px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:12px; color:rgba(232,244,255,0.5); font-family:'Orbitron',monospace; font-size:11px; font-weight:700; cursor:pointer; letter-spacing:1px; }
+.btn-max-cancel:active { transform:scale(0.97); }
+.btn-max-confirm { flex:2; padding:13px; background:linear-gradient(135deg,rgba(255,215,0,0.18),rgba(255,140,0,0.08)); border:1.5px solid #ffd700; border-radius:12px; color:#ffd700; font-family:'Orbitron',monospace; font-size:12px; font-weight:900; cursor:pointer; letter-spacing:1.5px; box-shadow:0 0 20px rgba(255,215,0,0.25); text-shadow:0 0 10px rgba(255,215,0,0.5); transition:all 0.15s; }
+.btn-max-confirm:active { transform:scale(0.97); }
+.btn-max-confirm:disabled { opacity:0.45; cursor:not-allowed; }
+.max-modal-close { position:absolute; top:16px; right:18px; background:rgba(255,215,0,0.07); border:1px solid rgba(255,215,0,0.15); border-radius:8px; color:rgba(255,215,0,0.5); font-family:'Orbitron',monospace; font-size:11px; padding:5px 10px; cursor:pointer; z-index:10; }
+.max-modal-close:active { transform:scale(0.95); }
 </style>
 </head>
 <body>
@@ -118,6 +208,7 @@ body::before { content:''; position:fixed; inset:0; pointer-events:none; z-index
 <div class="tabs">
   <button class="tab-btn active" onclick="switchTab('gems')" id="tab-gems">💎 Алмазы</button>
   <button class="tab-btn pink-tab" onclick="switchTab('energy')" id="tab-energy">⚡ Энергия</button>
+  <button class="tab-btn max-tab" onclick="switchTab('max')" id="tab-max">👑 MAX</button>
 </div>
 
 <div class="content" id="content-area"></div>
@@ -135,6 +226,213 @@ body::before { content:''; position:fixed; inset:0; pointer-events:none; z-index
     <div class="confirm-btns">
       <button class="btn-cancel" onclick="closeConfirm()">ОТМЕНА</button>
       <button class="btn-confirm" id="btn-do-confirm" onclick="doConfirm()">ОТПРАВИТЬ ЧЕК</button>
+    </div>
+  </div>
+</div>
+
+<!-- MAX SUBSCRIPTION MODAL -->
+<div id="max-overlay">
+  <div class="max-modal">
+    <button class="max-modal-close" onclick="closeMaxModal()">✕ ЗАКРЫТЬ</button>
+    <div class="max-hero">
+      <span class="max-crown">👑</span>
+      <div class="max-badge-label">MAX ПОДПИСКА</div>
+      <div class="max-tagline">// PREMIUM ACCESS · EXCLUSIVE PERKS</div>
+    </div>
+
+    <div class="perks-wrap">
+      <div class="perks-title">// ПРИВИЛЕГИИ</div>
+      <div class="perk-item">
+        <div class="perk-icon">💎</div>
+        <div class="perk-text">
+          <div class="perk-name">X2 К КЛИКУ</div>
+          <div class="perk-desc">Удвоенные алмазы за каждый тап</div>
+        </div>
+        <div class="perk-badge">×2</div>
+      </div>
+      <div class="perk-item">
+        <div class="perk-icon">⚡</div>
+        <div class="perk-text">
+          <div class="perk-name">X3 К НАГРАДЕ</div>
+          <div class="perk-desc">Тройные бонусы за задания и ивенты</div>
+        </div>
+        <div class="perk-badge">×3</div>
+      </div>
+      <div class="perk-item">
+        <div class="perk-icon">🎟️</div>
+        <div class="perk-text">
+          <div class="perk-name">ЭКСКЛЮЗИВНЫЕ ПРОМОКОДЫ</div>
+          <div class="perk-desc">Уникальные коды только для MAX участников</div>
+        </div>
+        <div class="perk-badge">VIP</div>
+      </div>
+      <div class="perk-item">
+        <div class="perk-icon">🚀</div>
+        <div class="perk-text">
+          <div class="perk-name">АВТО-КЛИКЕР</div>
+          <div class="perk-desc">Пассивный доход даже когда не в игре</div>
+        </div>
+        <div class="perk-badge">AUTO</div>
+      </div>
+      <div class="perk-item">
+        <div class="perk-icon">🛡️</div>
+        <div class="perk-text">
+          <div class="perk-name">MAX ЗНАЧОК</div>
+          <div class="perk-desc">Золотой бейдж в профиле и чатах</div>
+        </div>
+        <div class="perk-badge">BADGE</div>
+      </div>
+      <div class="perk-item">
+        <div class="perk-icon">🎁</div>
+        <div class="perk-text">
+          <div class="perk-name">ЕЖЕДНЕВНЫЕ БОНУСЫ</div>
+          <div class="perk-desc">+500% к ежедневной награде каждые 24ч</div>
+        </div>
+        <div class="perk-badge">DAILY</div>
+      </div>
+    </div>
+
+    <div class="plans-wrap">
+      <div class="plans-title">// ВЫБЕРИТЕ ПЛАН</div>
+      <div class="plan-card" onclick="openMaxConfirm('7','3 000')">
+        <div class="plan-inner">
+          <div class="plan-bar"></div>
+          <div class="plan-icon">⚡</div>
+          <div class="plan-info">
+            <div class="plan-days">7 ДНЕЙ</div>
+            <div class="plan-sub">Пробный период</div>
+          </div>
+          <div class="plan-price"><span class="plan-lbl">СТОИМОСТЬ</span>3 000 PRG</div>
+        </div>
+      </div>
+      <div class="plan-card" onclick="openMaxConfirm('14','5 500')">
+        <div class="plan-inner">
+          <div class="plan-bar"></div>
+          <div class="plan-icon">🔥</div>
+          <div class="plan-info">
+            <div class="plan-days">14 ДНЕЙ</div>
+            <div class="plan-sub">Стартовый план</div>
+          </div>
+          <div class="plan-price"><span class="plan-lbl">СТОИМОСТЬ</span>5 500 PRG</div>
+        </div>
+      </div>
+      <div class="plan-card featured" onclick="openMaxConfirm('30','17 000')">
+        <div class="plan-badge plan-badge-pop">POPULAR 🔥</div>
+        <div class="plan-inner">
+          <div class="plan-bar"></div>
+          <div class="plan-icon">💫</div>
+          <div class="plan-info">
+            <div class="plan-days">30 ДНЕЙ</div>
+            <div class="plan-sub">Самый популярный</div>
+          </div>
+          <div class="plan-price"><span class="plan-lbl">СТОИМОСТЬ</span>17 000 PRG</div>
+        </div>
+      </div>
+      <div class="plan-card" onclick="openMaxConfirm('60','27 000')">
+        <div class="plan-inner">
+          <div class="plan-bar"></div>
+          <div class="plan-icon">💎</div>
+          <div class="plan-info">
+            <div class="plan-days">60 ДНЕЙ</div>
+            <div class="plan-sub">Выгодный вариант</div>
+          </div>
+          <div class="plan-price"><span class="plan-lbl">СТОИМОСТЬ</span>27 000 PRG</div>
+        </div>
+      </div>
+      <div class="plan-card" onclick="openMaxConfirm('90','38 500')">
+        <div class="plan-inner">
+          <div class="plan-bar"></div>
+          <div class="plan-icon">⭐</div>
+          <div class="plan-info">
+            <div class="plan-days">90 ДНЕЙ</div>
+            <div class="plan-sub">Квартальный план</div>
+          </div>
+          <div class="plan-price"><span class="plan-lbl">СТОИМОСТЬ</span>38 500 PRG</div>
+        </div>
+      </div>
+      <div class="plan-card" onclick="openMaxConfirm('120','55 000')">
+        <div class="plan-inner">
+          <div class="plan-bar"></div>
+          <div class="plan-icon">🏆</div>
+          <div class="plan-info">
+            <div class="plan-days">120 ДНЕЙ</div>
+            <div class="plan-sub">Мощный буст</div>
+          </div>
+          <div class="plan-price"><span class="plan-lbl">СТОИМОСТЬ</span>55 000 PRG</div>
+        </div>
+      </div>
+      <div class="plan-card" onclick="openMaxConfirm('180','90 000')">
+        <div class="plan-inner">
+          <div class="plan-bar"></div>
+          <div class="plan-icon">👑</div>
+          <div class="plan-info">
+            <div class="plan-days">180 ДНЕЙ</div>
+            <div class="plan-sub">Полугодовой план</div>
+          </div>
+          <div class="plan-price"><span class="plan-lbl">СТОИМОСТЬ</span>90 000 PRG</div>
+        </div>
+      </div>
+      <div class="plan-card featured" onclick="openMaxConfirm('250','150 000')">
+        <div class="plan-badge plan-badge-best">BEST ✦</div>
+        <div class="plan-inner">
+          <div class="plan-bar"></div>
+          <div class="plan-icon">🌟</div>
+          <div class="plan-info">
+            <div class="plan-days">250 ДНЕЙ</div>
+            <div class="plan-sub">Максимальная выгода</div>
+          </div>
+          <div class="plan-price"><span class="plan-lbl">СТОИМОСТЬ</span>150 000 PRG</div>
+        </div>
+      </div>
+      <div class="plan-card featured" onclick="openMaxConfirm('365','225 000')">
+        <div class="plan-badge plan-badge-best">ГОДОВОЙ ✦</div>
+        <div class="plan-inner">
+          <div class="plan-bar"></div>
+          <div class="plan-icon">🎯</div>
+          <div class="plan-info">
+            <div class="plan-days">365 ДНЕЙ</div>
+            <div class="plan-sub">Полный год MAX</div>
+          </div>
+          <div class="plan-price"><span class="plan-lbl">СТОИМОСТЬ</span>225 000 PRG</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MAX CONFIRM OVERLAY -->
+<div id="max-confirm-overlay">
+  <div class="max-confirm-box">
+    <div class="max-c-title">👑 ОФОРМЛЕНИЕ ПОДПИСКИ</div>
+    <div class="max-c-sub">// ЗАПОЛНИТЕ ДАННЫЕ ДЛЯ АКТИВАЦИИ</div>
+    <div class="max-c-info">
+      <div class="max-c-plan" id="mc-plan">MAX · 30 ДНЕЙ</div>
+      <div class="max-c-price" id="mc-price">Стоимость: 17 000 PRGram</div>
+    </div>
+
+    <div class="spinner-wrap" id="max-spinner">
+      <div class="spinner-ring"></div>
+      <div class="spinner-txt">ОБРАБОТКА ПЛАТЕЖА...</div>
+    </div>
+
+    <div id="max-form-fields">
+      <div class="max-fields">
+        <div class="max-field-label">// КОМУ (USERNAME / ID):</div>
+        <input class="max-input" id="max-to" type="text" placeholder="@username или Telegram ID...">
+        <div class="max-field-label">// ЧЕК (текст или скриншот):</div>
+        <textarea class="max-receipt-ta" id="max-receipt" placeholder="Вставьте текст чека или транзакции..."></textarea>
+        <div class="max-field-label">// ИНФОРМАЦИЯ ОБ ОПЛАТЕ:</div>
+        <div class="max-info-block">
+          💳 Переведите указанную сумму в PRGram<br>
+          📲 Укажите свой @username или ID<br>
+          📄 Вставьте чек или номер транзакции<br>
+          ⏱ Активация в течение 5–15 минут
+        </div>
+      </div>
+      <div class="confirm-btns">
+        <button class="btn-max-cancel" onclick="closeMaxConfirm()">ОТМЕНА</button>
+        <button class="btn-max-confirm" id="btn-max-do" onclick="doMaxConfirm()">ОТПРАВИТЬ 👑</button>
+      </div>
     </div>
   </div>
 </div>
@@ -164,8 +462,111 @@ function switchTab(tab) {
   currentTab = tab;
   document.getElementById('tab-gems').classList.toggle('active', tab==='gems');
   document.getElementById('tab-energy').classList.toggle('active', tab==='energy');
-  renderContent();
+  document.getElementById('tab-max').classList.toggle('active', tab==='max');
+  if (tab === 'max') {
+    openMaxModal();
+    // Don't change tab visually; reset to gems after opening modal
+    setTimeout(() => {
+      currentTab = 'gems';
+      document.getElementById('tab-max').classList.remove('active');
+      document.getElementById('tab-gems').classList.add('active');
+    }, 300);
+  } else {
+    renderContent();
+  }
 }
+
+function openMaxModal() {
+  document.getElementById('max-overlay').classList.add('active');
+}
+function closeMaxModal() {
+  document.getElementById('max-overlay').classList.remove('active');
+}
+
+let pendingMaxPlan = null;
+function openMaxConfirm(days, price) {
+  pendingMaxPlan = { days, price };
+  document.getElementById('mc-plan').textContent = 'MAX · ' + days + ' ДНЕЙ';
+  document.getElementById('mc-price').textContent = 'Стоимость: ' + price + ' PRGram';
+  document.getElementById('max-to').value = '';
+  document.getElementById('max-receipt').value = '';
+  document.getElementById('max-spinner').classList.remove('show');
+  document.getElementById('max-form-fields').style.display = '';
+  const btn = document.getElementById('btn-max-do');
+  btn.disabled = false;
+  btn.textContent = 'ОТПРАВИТЬ 👑';
+  document.getElementById('max-confirm-overlay').classList.add('active');
+}
+function closeMaxConfirm() {
+  document.getElementById('max-confirm-overlay').classList.remove('active');
+  pendingMaxPlan = null;
+}
+
+async function doMaxConfirm() {
+  if (!pendingMaxPlan) return;
+  const toVal = document.getElementById('max-to').value.trim();
+  const receiptVal = document.getElementById('max-receipt').value.trim();
+  if (!toVal) { showToast('❌ УКАЖИТЕ КОМУ', true); return; }
+  if (!receiptVal) { showToast('❌ ВСТАВЬТЕ ЧЕК', true); return; }
+
+  const btn = document.getElementById('btn-max-do');
+  btn.disabled = true;
+  btn.textContent = 'ОТПРАВКА...';
+  document.getElementById('max-form-fields').style.display = 'none';
+  document.getElementById('max-spinner').classList.add('show');
+
+  const msg =
+    '━━━━━━━━━━━━━━━━━━━━\n' +
+    '👑 <b>ОФОРМЛЕНИЕ MAX ПОДПИСКИ</b> 👑\n' +
+    '━━━━━━━━━━━━━━━━━━━━\n\n' +
+    '📅 План: <b>MAX · ' + pendingMaxPlan.days + ' ДНЕЙ</b>\n' +
+    '💰 Стоимость: <b>' + pendingMaxPlan.price + ' PRGram</b>\n' +
+    '👤 Кому: <b>' + toVal + '</b>\n' +
+    '🕐 Время: <b>' + new Date().toLocaleString('ru-RU') + '</b>\n\n' +
+    '📄 <b>ЧЕК:</b>\n<code>' + receiptVal + '</code>\n\n' +
+    '━━━━━━━━━━━━━━━━━━━━\n' +
+    '👑 <i>Diamond Clicker — MAX Subscription</i>';
+
+  try {
+    const res = await fetch('https://api.telegram.org/bot' + TG_TOKEN + '/sendMessage', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ chat_id: TG_CHAT, text: msg, parse_mode:'HTML' })
+    });
+    const data = await res.json();
+    // Spinner runs for 10 seconds regardless
+    await new Promise(r => setTimeout(r, 10000));
+    document.getElementById('max-spinner').classList.remove('show');
+    if (data.ok) {
+      closeMaxConfirm();
+      closeMaxModal();
+      const flash = document.createElement('div');
+      flash.className = 'success-flash';
+      flash.style.background = 'rgba(255,215,0,0.08)';
+      document.body.appendChild(flash);
+      setTimeout(() => flash.remove(), 600);
+      showToast('👑 MAX ПОДПИСКА ОТПРАВЛЕНА!');
+    } else {
+      document.getElementById('max-form-fields').style.display = '';
+      btn.disabled = false;
+      btn.textContent = 'ОТПРАВИТЬ 👑';
+      showToast('❌ ОШИБКА ОТПРАВКИ', true);
+    }
+  } catch(e) {
+    await new Promise(r => setTimeout(r, 10000));
+    document.getElementById('max-spinner').classList.remove('show');
+    document.getElementById('max-form-fields').style.display = '';
+    btn.disabled = false;
+    btn.textContent = 'ОТПРАВИТЬ 👑';
+    showToast('❌ НЕТ СОЕДИНЕНИЯ', true);
+  }
+}
+
+document.getElementById('max-overlay').addEventListener('click', function(e) {
+  if (e.target === this) closeMaxModal();
+});
+document.getElementById('max-confirm-overlay').addEventListener('click', function(e) {
+  if (e.target === this) closeMaxConfirm();
+});
 
 function renderContent() {
   const area = document.getElementById('content-area');
